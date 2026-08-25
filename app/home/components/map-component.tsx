@@ -20,30 +20,30 @@ const Component = ({ counter, t }: MapComponentProps) => {
           {/*<MainTitleDiv data-test="map-title">{t("treesPlanted")}</MainTitleDiv>*/}
           {/*<MainSubtitleKickDiv>{counter}</MainSubtitleKickDiv>*/}
         </Grid>
-        <Grid size={{xs:12, xl:3}}>
+        <Grid size={3}>
           <TitleDiv>15 Million</TitleDiv>
           <ContentDiv>{t("peopleUsing")}</ContentDiv>
         </Grid>
-        <Grid size={{xs:12, xl:3}}>
+        <Grid size={3}>
           <TitleDiv>500+</TitleDiv>
           <ContentDiv>{t("nativeSpecies")}</ContentDiv>
         </Grid>
-        <Grid size={{xs:12, xl:3}}>
+        <Grid size={3}>
           <TitleDiv>30+</TitleDiv>
           <ContentDiv>{t("countries")}</ContentDiv>
         </Grid>
-        <Grid size={{xs:12, xl:3}}>
+        <Grid size={3}>
           <TitleDiv>60+</TitleDiv>
           <ContentDiv>{t("activeProjects")}</ContentDiv>
         </Grid>
-        <Grid  size={12}>
+        <Grid size={12}>
           <LinkDiv>
             <Link href="blog?id=projects">
              {t("discover")} <ChevronRightIcon fontSize="small" />
             </Link>
           </LinkDiv>
         </Grid>
-        <Grid  size={12}>
+        <Grid size={12}>
           &nbsp;
         </Grid>
       </Grid>

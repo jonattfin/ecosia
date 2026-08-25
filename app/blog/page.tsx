@@ -3,12 +3,49 @@
 import {useSearchParams} from "next/navigation";
 import {Suspense, useContext} from "react";
 
-import {fetchProjects, fetchReports} from "@/app/api";
-
-
 import BlogComponent, {BlogProps} from "./blog-component";
 import {LanguageContext} from "@/app/providers/context";
 import {useQuery} from "@tanstack/react-query";
+
+const useProjects = () => {
+  const {
+    data,
+    isPending,
+    error,
+  } = useQuery({
+    queryKey: ["projects"],
+    queryFn: async () => {
+      const response = await fetch("/api/projects/all");
+      return await response.json();
+    }
+  });
+
+  return {
+    isPending,
+    data,
+    error,
+  }
+}
+
+const useReports = () => {
+  const {
+    data,
+    isPending,
+    error,
+  } = useQuery({
+    queryKey: ["reports"],
+    queryFn: async () => {
+      const response = await fetch("/api/reports/all");
+      return await response.json();
+    }
+  });
+
+  return {
+    isPending,
+    data,
+    error,
+  }
+}
 
 function InternalComponent() {
   const searchParams = useSearchParams();
@@ -16,25 +53,11 @@ function InternalComponent() {
 
   const language = useContext(LanguageContext);
 
-  const {
-    isLoading: projectsAreLoading,
-    error: projectsError,
-    data: projectsData,
-  } = useQuery({
-    queryKey: ["projects"],
-    queryFn: fetchProjects
-  });
+  const {data: projectsData, isPending: projectsArePending, error: projectsError} = useProjects();
+  const {data: reportsData, isPending: reportsArePending, error: reportsError} = useReports();
 
-  const {
-    isLoading: reportsAreLoading,
-    error: reportsError,
-    data: reportsData,
-  } = useQuery({
-    queryKey: ["reports"],
-    queryFn: () => fetchReports()
-  });
 
-  if (projectsAreLoading || reportsAreLoading) return "Loading...";
+  if (projectsArePending || reportsArePending) return "Loading...";
   if (projectsError || reportsError || !projectsData || !reportsData)
     return "An error has occurred...";
 
@@ -46,14 +69,14 @@ function InternalComponent() {
   };
 
   return (
-      <BlogComponent {...props}></BlogComponent>
+    <BlogComponent {...props}></BlogComponent>
   )
 }
 
 export default function Component() {
   return (
     <Suspense fallback={<>...</>}>
-      <InternalComponent />
+      <InternalComponent/>
     </Suspense>
   )
 }

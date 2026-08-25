@@ -68,29 +68,29 @@ const Component = ({ changeLanguage, t, language }: any) => {
               // justifyContent="center"
               component={"section"}
             >
-              <Stack direction="row" component={"section"}>
-                <PaddingLink
-                  href="https://github.com/jonattfin/ecosia-web"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <GitHubIcon fontSize="small"></GitHubIcon>
-                </PaddingLink>
-                <PaddingLink
-                  href="https://www.chromatic.com/builds?appId=629e38adc84b50004a0c06fc"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <AutoStoriesIcon fontSize="small" color="secondary"></AutoStoriesIcon>
-                </PaddingLink>
-                <PaddingLink
-                  href="https://sonarcloud.io/summary/new_code?id=jonattfin_ecosia-web"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src="https://sonarcloud.io/api/project_badges/measure?project=jonattfin_ecosia-web&metric=alert_status" />
-                </PaddingLink>
-              </Stack>
+              {/*<Stack direction="row" component={"section"}>*/}
+              {/*  <PaddingLink*/}
+              {/*    href="https://github.com/jonattfin/ecosia-web"*/}
+              {/*    target="_blank"*/}
+              {/*    rel="noreferrer"*/}
+              {/*  >*/}
+              {/*    <GitHubIcon fontSize="small"></GitHubIcon>*/}
+              {/*  </PaddingLink>*/}
+              {/*  <PaddingLink*/}
+              {/*    href="https://www.chromatic.com/builds?appId=629e38adc84b50004a0c06fc"*/}
+              {/*    target="_blank"*/}
+              {/*    rel="noreferrer"*/}
+              {/*  >*/}
+              {/*    <AutoStoriesIcon fontSize="small" color="secondary"></AutoStoriesIcon>*/}
+              {/*  </PaddingLink>*/}
+              {/*  <PaddingLink*/}
+              {/*    href="https://sonarcloud.io/summary/new_code?id=jonattfin_ecosia-web"*/}
+              {/*    target="_blank"*/}
+              {/*    rel="noreferrer"*/}
+              {/*  >*/}
+              {/*    <img src="https://sonarcloud.io/api/project_badges/measure?project=jonattfin_ecosia-web&metric=alert_status" />*/}
+              {/*  </PaddingLink>*/}
+              {/*</Stack>*/}
 
               <IconButton size="small" aria-label="" color="inherit">
                 <Badge badgeContent={numberOfTrees} color="success">

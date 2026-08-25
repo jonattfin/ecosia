@@ -1,25 +1,37 @@
-import { Fragment } from "react";
+import {Fragment} from "react";
 
 import FinancialComponent from "./financial-component";
-import {fetchLastReport} from "@/app/api";
 import {useQuery} from "@tanstack/react-query";
 
-export default function Component({
-  language,
-}: {
-  language: string | undefined;
-}) {
+export const useLastReport = () => {
   const {
-    data: report,
-    isLoading: reportIsLoading,
-    error: reportError,
+    data,
+    isPending,
+    error,
   } = useQuery({
-    queryKey: ["fetchLastReport"],
-    queryFn: () => fetchLastReport()
+    queryKey: ["last-report"],
+    queryFn: async () => {
+      const response = await fetch("/api/reports/last-report");
+      return await response.json();
+    }
   });
 
-  if (reportIsLoading) return <Fragment>Loading...</Fragment>;
-  if (reportError || !report) return <Fragment>An error has occurred</Fragment>;
+  return {
+    isPending,
+    data,
+    error,
+  }
+}
 
-  return <FinancialComponent {...{ report, language }} />;
+export default function Component({
+                                    language,
+                                  }: {
+  language: string | undefined;
+}) {
+  const {data, isPending, error} = useLastReport();
+
+  if (isPending) return <Fragment>Loading...</Fragment>;
+  if (error || !data) return <Fragment>An error has occurred</Fragment>;
+
+  return <FinancialComponent {...{report: data, language}} />;
 }

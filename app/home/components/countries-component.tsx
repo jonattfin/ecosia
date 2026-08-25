@@ -13,29 +13,34 @@ const Component = ({ t }: { t: ITranslationFunc }) => {
     <section>
       <Grid container spacing={2}>
         <Grid size={12}>
+          <div>&nbsp;</div>
           <MainTitleDiv data-test="countries-title">
             {t("whereAreTreesPlanted")}
           </MainTitleDiv>
-          <MainSubtitleDiv data-test="countries-subtitle">
-            {t("wePlantIn30Countries")}
-          </MainSubtitleDiv>
+          {/*<MainSubtitleDiv data-test="countries-subtitle">*/}
+          {/*  {t("wePlantIn30Countries")}*/}
+          {/*</MainSubtitleDiv>*/}
+          <div>&nbsp;</div>
         </Grid>
-        <Grid size={{xs:12, xl:4}}>
+        <Grid size={6}>
           <Image src={Images.BrazilImage} alt="brazil" {...imageProps} />
+          <div>&nbsp;</div>
           <NameDiv>Brazil</NameDiv>
           <TextDiv>{t("treesInBrasil")}</TextDiv>
         </Grid>
-        <Grid size={{xs:12, xl:4}}>
+        <Grid size={6}>
           <Image
             src={Images.BurkinaFasoImage}
             alt="burkina faso"
             {...imageProps}
           />
+          <div>&nbsp;</div>
           <NameDiv>Burkina Faso</NameDiv>
           <TextDiv>{t("treesInBurkinaFaso")}</TextDiv>
         </Grid>
-        <Grid size={{xs:12, xl:4}}>
+        <Grid size={6}>
           <Image src={Images.IndonesiaImage} alt="indonesia" {...imageProps} />
+          <div>&nbsp;</div>
           <NameDiv>Indonesia</NameDiv>
           <TextDiv>{t("treesInIndonesia")}</TextDiv>
         </Grid>

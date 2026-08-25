@@ -31,7 +31,7 @@ export const handlers = [
   http.get(`${httpBaseUrl}/tags`, async () => {
     const json = db.tag.getAll();
 
-     return HttpResponse.json({
+    return HttpResponse.json({
       body: json,
       status: 200,
     })
@@ -43,7 +43,7 @@ export const handlers = [
       reports: db.report.getAll()
     };
 
-     return HttpResponse.json({
+    return HttpResponse.json({
       body: json,
       status: 200,
     })
@@ -52,7 +52,9 @@ export const handlers = [
   http.get(`${httpBaseUrl}/reports/last`, async () => {
     const reports = db.report.getAll();
 
-     return HttpResponse.json({
+    console.log(reports);
+
+    return HttpResponse.json({
       body: reports,
       status: 200,
     })

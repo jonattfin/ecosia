@@ -45,8 +45,8 @@ export interface Project {
   scope: string;
   description: string;
   title: string;
-  treesPlanted: string;
-  hectaresRestored: string;
+  treesPlanted: number;
+  hectaresRestored: number;
   yearSince: number;
   imageUrl: string;
   tags: Tag[];

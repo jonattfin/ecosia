@@ -2,9 +2,10 @@ import {NextRequest, NextResponse} from "next/server";
 
 import _, {head} from 'lodash';
 import {loremIpsum} from "lorem-ipsum";
+import {Project} from "@/app/api/interfaces";
 
 export async function GET(request: NextRequest) {
-  const data = _.range(1, 10)
+  const data: Project[] = _.range(1, 10)
     .map((id) => ({
       id,
       name: `project_${id}`,
@@ -14,9 +15,24 @@ export async function GET(request: NextRequest) {
       hectaresRestored: 100,
       yearSince: 2018,
       imageUrl: 'url',
-      tags: []
+      scope: "",
+      tags: [{
+        id: 1,
+        title: "Partners",
+        subtitle: "partners"
+      },
+        {
+          id: 2,
+          title: "Challenges",
+          subtitle: "Challenges"
+        },
+        {
+          id: 3,
+          title: "Wildlife protected",
+          subtitle: "Wildlife protected"
+        }]
     }));
   return NextResponse.json({
-    projects: head(data)
+    ...head(data)
   });
 }

@@ -24,6 +24,8 @@ export default function Component({ project }: ProjectProps) {
   const logoimageProps = { width: 150, height: 0, alt: "something special" };
   logoimageProps.height = imageProps.width * 0.5;
 
+  console.log(project);
+
   return (
     <MainContainerDiv>
       <Grid container spacing={2}>

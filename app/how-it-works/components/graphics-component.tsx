@@ -8,7 +8,8 @@ const Component = ({ t }: { t: ITranslationFunc }) => {
   return (
     <section>
       <Grid container spacing={2}>
-        <Grid>
+        <Grid size={12}>
+          <div>&nbsp;</div>
           <MainTitleDiv>Over 146 million trees planted</MainTitleDiv>
           <ContainerDiv>
             <div>

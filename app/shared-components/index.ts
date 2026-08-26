@@ -23,7 +23,7 @@ export const MainTitleDiv = styled.div`
 `;
 
 export const MainSubtitleDiv = styled.div`
-  font-size: 2em;
+  font-size: 1.5em;
 `;
 
 export const MainSubtitleKickDiv = styled.div`

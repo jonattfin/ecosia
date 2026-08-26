@@ -1,8 +1,10 @@
 import range from 'lodash/range';
 import last from 'lodash/last';
+import random from 'lodash/random';
 import {loremIpsum} from "lorem-ipsum";
-import {Project, ReportData} from "@/app/api/interfaces";
+import {Project, ReportData, Tag} from "@/app/api/interfaces";
 
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 class Repository {
   private readonly projects: Project[] = [];
@@ -30,47 +32,44 @@ class Repository {
   }
 
   private static createProjects(): Project[] {
-    return range(1, 10)
+    const tags: Tag[] = ["Partners", "Planting method", "Planting season", "Main threats", "Wildlife protected"].map(t => {
+      return {
+        id: t,
+        title: t,
+        subtitle: t,
+      }
+    })
+
+    return range(0, months.length / 2)
       .map((id) => ({
         id,
-        name: `project_${id}`,
+        name: `Project ${months[id]}`,
         description: loremIpsum(),
-        title: `title_${id}`,
+        title: `Project ${months[id]}`,
         treesPlanted: 100,
         hectaresRestored: 100,
         yearSince: 2018,
-        imageUrl: 'url',
+        imageUrl: "https://picsum.photos/400/400",
         scope: "",
-        tags: [{
-          id: 1,
-          title: "Partners",
-          subtitle: "partners"
-        },
-          {
-            id: 2,
-            title: "Challenges",
-            subtitle: "Challenges"
-          },
-          {
-            id: 3,
-            title: "Wildlife protected",
-            subtitle: "Wildlife protected"
-          }]
+        tags
       }));
   }
 
   private static createReports(): ReportData[] {
-    return range(1, 10)
-      .map(id => ({
-          month: `month_${id}`,
+    const categories = ["Marketing", "Infrastructure", "Salaries", "Trees" ];
+    const countries = ["Uganda", "Kenia", "Zambia", "Cameroon"];
+
+    return range(0, 7)
+      .map(month => ({
+          month: months[month],
           year: 2026,
-          investmentsInCategories: range(1, 3).map((index) => ({
-            categoryName: `category_${index}`,
-            amount: (index + 1) * 10,
+          investmentsInCategories: range(0, categories.length).map((index) => ({
+            categoryName: categories[index],
+            amount: (index + 1) * 1000 * random(1, 10),
           })),
-          investmentsInCountries: range(1,5).map((index) => ({
-            countryName: `country ${index.toString()},`,
-            amount: (index + 1) * 10,
+          investmentsInCountries: range(0,countries.length).map((index) => ({
+            countryName: countries[index],
+            amount: (index + 1) * 1000 * random(1, 10),
           }))
         })
       );

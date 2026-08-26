@@ -29,6 +29,7 @@ const Component = ({t}: { t: ITranslationFunc }) => {
         <DivChildContainer id="statements">
           {getStatements().map(({title, content, image}, index) => (
             <DivContent key={`statement_${index}`}>
+              <div>&nbsp;</div>
               <div>
                 <CenteredImage src={image} alt="tldr"/>
               </div>

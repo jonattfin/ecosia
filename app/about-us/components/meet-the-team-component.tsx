@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { Button, Grid } from "@mui/material";
+import {useState} from "react";
+import {Button, Grid} from "@mui/material";
 import styled from "@emotion/styled";
 import {ITranslationFunc, withTranslations} from "@/app/helpers";
-import {MainSubtitleDiv, MainTitleDiv } from "@/app/shared-components";
+import {MainSubtitleDiv, MainTitleDiv} from "@/app/shared-components";
 import {Language} from "@/app/providers/context";
 
 
-const Component = ({ t }: { t: ITranslationFunc }) => {
+const Component = ({t}: { t: ITranslationFunc }) => {
   const [play, setPlay] = useState(false);
 
   return (
@@ -14,31 +14,20 @@ const Component = ({ t }: { t: ITranslationFunc }) => {
       <Grid container spacing={2}>
         <Grid size={12}>
           <TeamContainerDiv>
-            {!play && (
-              <>
-                <MainTitleDiv>{t("stepInside")}</MainTitleDiv>
-                <MainSubtitleDiv>{t("meetTheHumans")}</MainSubtitleDiv>
-                <div>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    onClick={() => setPlay(true)}
-                  >
-                    Play
-                  </Button>
-                </div>
-              </>
-            )}
-            {play && (
-              <>
-                <MovieVideo controls autoPlay={true}>
-                  <source
-                    src="https://d3fme2ivr1xlgj.cloudfront.net/240719_ecosia_hiringvideo_subbed_titled.mp4"
-                    type="video/mp4"
-                  />
-                </MovieVideo>
-              </>
-            )}
+            <>
+              <MainTitleDiv>{t("stepInside")}</MainTitleDiv>
+              <MainSubtitleDiv>{t("meetTheHumans")}</MainSubtitleDiv>
+              <div>
+                {play}
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => setPlay(true)}
+                >
+                  Play
+                </Button>
+              </div>
+            </>
           </TeamContainerDiv>
         </Grid>
       </Grid>
@@ -49,15 +38,11 @@ const Component = ({ t }: { t: ITranslationFunc }) => {
 // Styled Components
 
 const TeamContainerDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 30vh;
-`;
-
-const MovieVideo = styled.video`
-  max-width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 30vh;
 `;
 
 // translations

@@ -2,8 +2,8 @@ import { ResponsivePie } from "@nivo/pie";
 
 const commonProperties = {
   animate: true,
-  activeOuterRadiusOffset: 8,
-  margin: { left: 120 },
+  activeOuterRadiusOffset: 5,
+  margin: { left: 100, right: 100 },
 };
 
 // make sure parent container have a defined height when using

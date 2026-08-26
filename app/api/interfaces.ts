@@ -53,7 +53,7 @@ export interface Project {
 }
 
 export interface Tag {
-  id: number;
+  id: string;
   title: string;
   subtitle: string;
 }

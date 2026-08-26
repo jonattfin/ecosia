@@ -15,6 +15,7 @@ export type MapComponentProps = {
 const Component = ({ counter, t }: MapComponentProps) => {
   return (
     <section>
+      <div>&nbsp;</div>
       <Grid container spacing={2}>
         <Grid size={12}>
           {/*<MainTitleDiv data-test="map-title">{t("treesPlanted")}</MainTitleDiv>*/}
@@ -38,7 +39,7 @@ const Component = ({ counter, t }: MapComponentProps) => {
         </Grid>
         <Grid size={12}>
           <LinkDiv>
-            <Link href="blog?id=projects">
+            <Link href="/blog?id=projects">
              {t("discover")} <ChevronRightIcon fontSize="small" />
             </Link>
           </LinkDiv>

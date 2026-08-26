@@ -1,25 +1,21 @@
-import { useState, useContext } from "react";
+import {useState} from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import { MenuItem, Menu, Divider, Badge, Stack } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import {createTheme, ThemeProvider} from "@mui/material/styles";
 
-import { useRouter } from "next/navigation";
+import Switch from '@mui/material/Switch';
 
-import { Language, TreesContext } from "@/app/providers/context";
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
 
-import {
-  ForestOutlined as ForestOutlinedIcon,
-  NotificationsNoneOutlined as NotificationsNoneOutlinedIcon,
-} from "@mui/icons-material";
-import { withTranslations } from "@/app/helpers";
-import styled from "@emotion/styled";
+import {useRouter} from "next/navigation";
+
+import {Language} from "@/app/providers/context";
+
+import {withTranslations} from "@/app/helpers";
+import Tabs from '@mui/material/Tabs';
+import {FormControlLabel, FormGroup} from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
@@ -30,139 +26,63 @@ const darkTheme = createTheme({
   },
 });
 
-const Component = ({ changeLanguage, t, language }: any) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-
-
-  const handleMenu = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-
+const Component = ({changeLanguage, t, language}: any) => {
   const router = useRouter();
-  const handleClose = (url: string) => {
-    setAnchorEl(null);
-    router.push(url);
-  };
-
-  const handleChangeLanguage = (lang: string) => {
-    setAnchorEl(null);
-    changeLanguage(lang);
-  };
-
-  const numberOfTrees = useContext(TreesContext);
 
   const otherLanguage: Language =
     language == Language.English ? Language.French : Language.English;
 
+  const [value, setValue] = useState('home');
+  const [checked, setChecked] = useState(true);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+    router.push(newValue);
+  };
+
+  const handleChangeLanguage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+    changeLanguage(otherLanguage);
+  };
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{flexGrow: 1}}>
       <ThemeProvider theme={darkTheme}>
         <AppBar>
           <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {/* Photos */}
+            <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
             </Typography>
             <Box
-              sx={{ display: { xs: "none", md: "flex" } }}
-              // alignContent="center"
-              // justifyContent="center"
+              sx={{display: {xs: "none", md: "flex"}}}
               component={"section"}
             >
-              {/*<Stack direction="row" component={"section"}>*/}
-              {/*  <PaddingLink*/}
-              {/*    href="https://github.com/jonattfin/ecosia-web"*/}
-              {/*    target="_blank"*/}
-              {/*    rel="noreferrer"*/}
-              {/*  >*/}
-              {/*    <GitHubIcon fontSize="small"></GitHubIcon>*/}
-              {/*  </PaddingLink>*/}
-              {/*  <PaddingLink*/}
-              {/*    href="https://www.chromatic.com/builds?appId=629e38adc84b50004a0c06fc"*/}
-              {/*    target="_blank"*/}
-              {/*    rel="noreferrer"*/}
-              {/*  >*/}
-              {/*    <AutoStoriesIcon fontSize="small" color="secondary"></AutoStoriesIcon>*/}
-              {/*  </PaddingLink>*/}
-              {/*  <PaddingLink*/}
-              {/*    href="https://sonarcloud.io/summary/new_code?id=jonattfin_ecosia-web"*/}
-              {/*    target="_blank"*/}
-              {/*    rel="noreferrer"*/}
-              {/*  >*/}
-              {/*    <img src="https://sonarcloud.io/api/project_badges/measure?project=jonattfin_ecosia-web&metric=alert_status" />*/}
-              {/*  </PaddingLink>*/}
-              {/*</Stack>*/}
-
-              <IconButton size="small" aria-label="" color="inherit">
-                <Badge badgeContent={numberOfTrees} color="success">
-                  <ForestOutlinedIcon color="info" />
-                </Badge>
-              </IconButton>
-              <IconButton size="small" aria-label="" color="inherit">
-                <Badge color="default">
-                  <NotificationsNoneOutlinedIcon color="disabled" />
-                </Badge>
-              </IconButton>
-            </Box>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              {getPages().map(({ slug, url }, index) => (
-                <MenuItem
-                  key={`menuItem_${index}`}
-                  onClick={() => handleClose(url)}
+              <Box>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  aria-label="wrapped label tabs example"
                 >
-                  {t(slug)}
-                </MenuItem>
-              ))}
-              <Divider />
-              <MenuItem onClick={() => handleChangeLanguage(otherLanguage)}>
-                {otherLanguage}
-              </MenuItem>
-            </Menu>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <MenuIcon color="primary" />
-            </IconButton>
+                  <Tab
+                    value="home"
+                    label={t("home")}
+                    wrapped
+                  />
+                  <Tab value="how-it-works" label={t("howItWorks")}/>
+                  <Tab value="mobile" label={t("mobileApp")}/>
+                  <Tab value="privacy" label={t("privacy")}/>
+                  <Tab value="about-us" label={t("aboutUs")}/>
+                </Tabs>
+              </Box>
+              <FormGroup>
+                <FormControlLabel control={<Switch checked={checked} onChange={handleChangeLanguage}/>} label={""}/>
+              </FormGroup>
+            </Box>
           </Toolbar>
         </AppBar>
       </ThemeProvider>
     </Box>
   );
 };
-
-const getPages = () => {
-  return [
-    { url: "/", slug: "home", icon: "home" },
-    { url: "/how-it-works", slug: "howItWorks", icon: "build" },
-    { url: "/about-us", slug: "aboutUs", icon: "help" },
-    { url: "/mobile", slug: "mobileApp", icon: "mobile-phone" },
-    { url: "/privacy", slug: "privacy", icon: "shield" },
-  ];
-};
-
-// Styled Components
-
-const PaddingLink = styled.a`
-  padding: 0 5px;
-`;
 
 // translations
 

@@ -4,12 +4,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import styled from "@emotion/styled";
 
-import {AppColor, Image} from "@/app/shared-components";
+import {Image} from "@/app/shared-components";
 import * as Images from "./components/images";
 import {Language} from "@/app/providers/context";
 import {ITranslationFunc, withTranslations} from "@/app/helpers";
 import {ProjectsComponent, ReportsComponent} from "./components";
-import Link from "next/link";
 import {Project, ReportData} from "@/app/api/interfaces";
 
 export type BlogProps = {
@@ -31,20 +30,19 @@ const Component = ({projects, t, reports, id}: BlogPropsWithTranslation) => {
   };
 
   const imageProps = {width: 150, height: 0, alt: "something special"};
-  imageProps.height = imageProps.width * 0.5;
 
   return (
     <MainContainer>
       <Grid container spacing={2}>
-        <Grid size={{xs:12, xl:3}}>
+        <Grid size={{xs: 12, xl: 2}}>
           &nbsp;
         </Grid>
-        <Grid size={{xs:12, xl:6}}>
+        <Grid size={{xs: 12, xl: 8}}>
           <LogoHeaderDiv>
-            <LogoImageDiv>
-              <Image src={Images.LogoImage} {...imageProps} />
-            </LogoImageDiv>
-            <TitleHeader>Blog</TitleHeader>
+            <div>
+              <Image src={Images.LogoImage} {...imageProps} alt=""/>
+            </div>
+            <div>&nbsp;</div>
           </LogoHeaderDiv>
 
           <ProjectsHeaderDiv>
@@ -71,7 +69,7 @@ const Component = ({projects, t, reports, id}: BlogPropsWithTranslation) => {
             />
           </TabPanel>
         </Grid>
-        <Grid size={{xs:12, xl:3}}>
+        <Grid size={{xs: 12, xl: 3}}>
           &nbsp;
         </Grid>
       </Grid>
@@ -95,31 +93,23 @@ function TabPanel(props: TabPanelProps) {
 // Styled Components
 
 const MainContainer = styled.div`
-  padding: 100px 0px;
+    padding: 100px 0px;
 `;
 
 const LogoHeaderDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 25px;
+    display: flex;
+    justify-content: center;
+    padding: 25px;
 `;
 
-const LogoImageDiv = styled.div`
-  max-width: 100px;
-`;
-
-const TitleHeader = styled.h1`
-  color: ${AppColor.Teal};
-  text-transform: uppercase;
-`;
 
 const ProjectsHeaderDiv = styled.div`
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 `;
 
 const SeparatorDiv = styled.div`
-  margin: 50px 0px;
+    margin: 50px 0px;
 `;
 
 // translations

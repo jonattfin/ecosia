@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
 
 import {
@@ -8,74 +8,85 @@ import {
   MainSubtitleDiv,
 } from "../../shared-components";
 import * as Images from "./images";
-import { ITranslationFunc, withTranslations } from "../../helpers";
+import {ITranslationFunc, withTranslations} from "../../helpers";
 import {Language} from "@/app/providers/context";
 
-const Component = ({ t }: { t: ITranslationFunc }) => {
-  const imageProps = { width: 150, height: 0 };
-  imageProps.height = imageProps.width * 0.6;
+const Component = ({t}: { t: ITranslationFunc }) => {
+  const imageProps = {width: 75, height: 0};
 
   return (
     <section>
-      <Grid container spacing={2}>
-        <Grid size={12}>
-          <MainTitleDiv>{t("why")}</MainTitleDiv>
-          <MainSubtitleDiv>{t("wePutPeople")}</MainSubtitleDiv>
+      <MainDiv>
+        <Grid container spacing={2}>
+          <Grid size={12}>
+            <div>&nbsp;</div>
+            <MainTitleDiv>{t("why")}</MainTitleDiv>
+            {/*<MainSubtitleDiv>{t("wePutPeople")}</MainSubtitleDiv>*/}
+          </Grid>
+          <Grid size={{md: 12, xl: 6}}>
+            <MainDiv>
+              <Image src={Images.ProfitsImage} alt="profits" {...imageProps} />
+              <ContainerDiv>
+                <TitleDiv>{t("notForProfit")}</TitleDiv>
+                <div>{t("weDedicate")}</div>
+              </ContainerDiv>
+            </MainDiv>
+          </Grid>
+          <Grid size={{md: 12, xl: 6}}>
+            <MainDiv>
+              <Image src={Images.WorldImage} alt="world" {...imageProps} />
+              <ContainerDiv>
+                <TitleDiv>{t("isPoweredByRenewable")}</TitleDiv>
+                <div>{t("ourSolarPanels")}</div>
+              </ContainerDiv>
+            </MainDiv>
+          </Grid>
+          <Grid size={{md: 12, xl: 6}}>
+            <MainDiv>
+              <Image src={Images.PrivacyImage} alt="privacy" {...imageProps} />
+              <ContainerDiv>
+                <TitleDiv>{t("privacyFirst")}</TitleDiv>
+                <div>{t("weAnonymize")}</div>
+              </ContainerDiv>
+            </MainDiv>
+          </Grid>
+          <Grid size={{md: 12, xl: 6}}>
+            <MainDiv>
+              <Image src={Images.CoinImage} alt="coin" {...imageProps} />
+              <ContainerDiv>
+                <TitleDiv>{t("weAreTransparent")}</TitleDiv>
+                <div>{t("wePublishReports")}</div>
+              </ContainerDiv>
+            </MainDiv>
+          </Grid>
+          <Grid size={12}>
+            &nbsp;
+          </Grid>
         </Grid>
-        <Grid size={12}>
-          <Image src={Images.ProfitsImage} alt="profits" {...imageProps} />
-        </Grid>
-        <Grid size={{md:12, xl:4}}>
-          <ContainerDiv>
-            <TitleDiv>{t("notForProfit")}</TitleDiv>
-            <div>{t("weDedicate")}</div>
-          </ContainerDiv>
-        </Grid>
-        <Grid size={{md:12, xl:2}} >
-          <Image src={Images.PrivacyImage} alt="privacy" {...imageProps} />
-        </Grid>
-        <Grid size={{md:12, xl:4}}>
-          <ContainerDiv>
-            <TitleDiv>{t("isPoweredByRenewable")}</TitleDiv>
-            <div>{t("ourSolarPanels")}</div>
-          </ContainerDiv>
-        </Grid>
-        <Grid size={{md:12, xl:2}}>
-          <Image src={Images.WorldImage} alt="world" {...imageProps} />
-        </Grid>
-        <Grid size={{md:12, xl:4}}>
-          <ContainerDiv>
-            <TitleDiv>{t("privacyFirst")}</TitleDiv>
-            <div>{t("weAnonymize")}</div>
-          </ContainerDiv>
-        </Grid>
-        <Grid size={{md:12, xl:2}}>
-          <Image src={Images.CoinImage} alt="coin" {...imageProps} />
-        </Grid>
-        <Grid size={{md:12, xl:4}}>
-          <ContainerDiv>
-            <TitleDiv>{t("weAreTransparent")}</TitleDiv>
-            <div>{t("wePublishReports")}</div>
-          </ContainerDiv>
-        </Grid>
-        <Grid size={12}>
-          &nbsp;
-        </Grid>
-      </Grid>
+      </MainDiv>
     </section>
   );
 };
 
 // Styled Components
 
+const MainDiv = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+`;
+
 const ContainerDiv = styled.div`
-  font-size: larger;
-  padding-left: 20px;
+    font-size: larger;
+    padding-left: 20px;
+    padding-top: 1rem;
 `;
 
 const TitleDiv = styled.div`
-  color: ${AppColor.Teal};
-  padding-bottom: 10px;
+    color: ${AppColor.Teal};
+    padding-bottom: 10px;
+    text-align: center;
 `;
 
 // translations

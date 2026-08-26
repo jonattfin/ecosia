@@ -21,6 +21,7 @@ const Component = ({
           <MainTitleDiv data-test="reports-title">
             {t("monthlyReports")}
           </MainTitleDiv>
+          <div>&nbsp;</div>
           <MainSubtitleDiv>
             {t("ourRevenue").replace(
               "[month]",
@@ -69,7 +70,7 @@ const MainSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 35vh;
 `;
 
 const ContentDiv = styled.div`
@@ -78,7 +79,7 @@ const ContentDiv = styled.div`
 `;
 
 const PieContainerDiv = styled.div`
-  width: 300px;
+  width: 350px;
   height: 300px;
 `;
 

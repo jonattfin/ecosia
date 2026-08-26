@@ -5,14 +5,13 @@ import { Image } from "@/app/shared-components";
 import * as Images from "./images";
 
 export default function Component() {
-  const imageProps = { width: 100, height: 0 };
-  imageProps.height = imageProps.width * 0.5;
+  const imageProps = { width: 250, height: 0 };
 
   return (
     <section>
       <Grid container spacing={2}>
-        <Grid>
-          <BrandsContainerDiv>
+        <Grid size={5}>
+          {/*<BrandsContainerDiv>*/}
             {getBrands().map((brand, index) => (
               <Image
                 src={brand}
@@ -21,7 +20,7 @@ export default function Component() {
                 {...imageProps}
               ></Image>
             ))}
-          </BrandsContainerDiv>
+          {/*</BrandsContainerDiv>*/}
         </Grid>
       </Grid>
     </section>

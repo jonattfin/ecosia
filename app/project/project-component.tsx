@@ -15,14 +15,13 @@ export type ProjectProps = {
 }
 
 export default function Component({ project }: ProjectProps) {
-  const imageProps = {
-    width: 374 / 2,
-    height: 684 / 2,
-    alt: "something special",
-  };
+  // const imageProps = {
+  //   width: 374 / 2,
+  //   height: 684 / 2,
+  //   alt: "something special",
+  // };
 
   const logoimageProps = { width: 150, height: 0, alt: "something special" };
-  logoimageProps.height = imageProps.width * 0.5;
 
   console.log(project);
 
@@ -37,7 +36,6 @@ export default function Component({ project }: ProjectProps) {
             <LogoImageDiv>
               <Image src={Images.LogoImage} {...logoimageProps} />
             </LogoImageDiv>
-            <TitleHeading>Blog</TitleHeading>
           </LogoHeaderDiv>
 
           <ProjectsHeaderDiv>
@@ -70,7 +68,7 @@ export default function Component({ project }: ProjectProps) {
                 <p>{project.description}</p>
               </Grid>
               <Grid size={{xs:12, xl:6}}>
-                <Image src={Images.CountryMapImage} {...imageProps}></Image>
+                <Image src={Images.CountryMapImage} alt={""}></Image>
               </Grid>
               {showTags(project.tags)}
             </Grid>
@@ -88,10 +86,10 @@ function showTags(tags: Tag[] = []) {
   return (
     <React.Fragment>
       {tags.map((tag, index) => (
-        <Grid size={{xs:12, xl:4}} key={`tag-${index}`}>
+        <Grid size={{xs:12, xl:3}} key={`tag-${index}`}>
           {renderImage(tag.title)}
           <p>{tag.title}</p>
-          <p>{tag.subtitle}</p>
+          {/*<p>{tag.subtitle}</p>*/}
         </Grid>
       ))}
     </React.Fragment>
@@ -112,9 +110,9 @@ function showTags(tags: Tag[] = []) {
     );
 
     if (foundImage) {
-      const imageProps = { width: 172, height: 161, alt: "something special" };
+      const imageProps = { width: 75, height: 100 };
 
-      return <Image src={foundImage.src} {...imageProps}></Image>;
+      return <Image src={foundImage.src} {...imageProps} alt={""}></Image>;
     }
   }
 }

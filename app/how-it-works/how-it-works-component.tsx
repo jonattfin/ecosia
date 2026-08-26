@@ -27,9 +27,9 @@ export default function Component({ language }: { language?: Language }) {
         </BlueGrid>
 
         {/* Brands section */}
-        <Grid size={12}>
-          <Components.BrandsComponent />
-        </Grid>
+        {/*<Grid size={12}>*/}
+        {/*  <Components.BrandsComponent />*/}
+        {/*</Grid>*/}
         {/* Brands section */}
 
         {/* How it works section */}

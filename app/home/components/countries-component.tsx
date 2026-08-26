@@ -22,13 +22,13 @@ const Component = ({ t }: { t: ITranslationFunc }) => {
           {/*</MainSubtitleDiv>*/}
           <div>&nbsp;</div>
         </Grid>
-        <Grid size={6}>
+        <Grid size={{xs:12, xl: 6}}>
           <Image src={Images.BrazilImage} alt="brazil" {...imageProps} />
           <div>&nbsp;</div>
           <NameDiv>Brazil</NameDiv>
           <TextDiv>{t("treesInBrasil")}</TextDiv>
         </Grid>
-        <Grid size={6}>
+        <Grid size={{xs:12, xl: 6}}>
           <Image
             src={Images.BurkinaFasoImage}
             alt="burkina faso"
@@ -38,7 +38,7 @@ const Component = ({ t }: { t: ITranslationFunc }) => {
           <NameDiv>Burkina Faso</NameDiv>
           <TextDiv>{t("treesInBurkinaFaso")}</TextDiv>
         </Grid>
-        <Grid size={6}>
+        <Grid size={{xs:12, xl: 6}}>
           <Image src={Images.IndonesiaImage} alt="indonesia" {...imageProps} />
           <div>&nbsp;</div>
           <NameDiv>Indonesia</NameDiv>
@@ -46,6 +46,7 @@ const Component = ({ t }: { t: ITranslationFunc }) => {
         </Grid>
         <Grid>&nbsp;</Grid>
       </Grid>
+      <div>&nbsp;</div>
     </section>
   );
 };

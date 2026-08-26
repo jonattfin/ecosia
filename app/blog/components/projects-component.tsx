@@ -24,7 +24,7 @@ export default function Component({projects, t}: ProjectsProps) {
       </Grid>
       {projects.map((project) => (
         <Grid
-          size={{xs:12, lg: 6, xl:4}}
+          size={{xs: 12, lg: 6, xl: 4}}
           key={project.id}
           onMouseEnter={() => setShownId(project.id)}
           onMouseLeave={() => setShownId(0)}
@@ -70,28 +70,29 @@ function showMediaLinks(project: Project) {
 // Styled Components
 
 const ProjectsDescriptionDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 50px;
-  border: 1px dashed grey;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    border: 1px dashed grey;
+    font-size: 1.5em;
 `;
 
 const ProjectImg = styled.img`
-  max-width: 100%;
+    max-width: 100%;
 `;
 
 const TitleContainerDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const TitleParagraph = styled.p`
-  text-transform: uppercase;
-  border-left: 5px solid teal;
-  padding: 5px;
+    text-transform: uppercase;
+    border-left: 5px solid teal;
+    padding: 5px;
 `;
 
 const SubtitleParagraph = styled.p`
-  font-size: larger;
+    font-size: larger;
 `;

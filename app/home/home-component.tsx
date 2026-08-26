@@ -85,12 +85,13 @@ export default function Component({
         <Grid size={{xl: 3}}>
           &nbsp;
         </Grid>
-        <Grid>
+        <Grid size={{xl:6}}>
           <Components.WhyChooseUsComponent {...{language}} />
         </Grid>
         <Grid size={{xl: 3}}>
           &nbsp;
         </Grid>
+
         {/* Why choose us section */}
         <Grid size={12}>
           <section>

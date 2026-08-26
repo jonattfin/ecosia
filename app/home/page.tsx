@@ -6,7 +6,6 @@ import {debounce} from "lodash";
 
 import HomeComponent from "./home-component";
 import {ResultQuery} from "@/app/api/interfaces";
-import {searchByQueryAsync} from "@/app/api";
 import {LanguageContext} from "@/app/providers/context";
 
 
@@ -25,7 +24,9 @@ export default function Component() {
 
   useEffect(() => {
     async function fetchData() {
-      const fetchedData = await searchByQueryAsync(query);
+      const fetchedData = {
+        searches: []
+      }
       setData(fetchedData.searches);
     }
 

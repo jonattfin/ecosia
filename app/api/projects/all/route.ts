@@ -1,21 +1,8 @@
 import {NextRequest, NextResponse} from "next/server";
-
-import _ from 'lodash';
-import {loremIpsum} from "lorem-ipsum";
+import repository from "@/app/api/repository";
 
 export async function GET(request: NextRequest) {
-  const data = _.range(1, 10)
-    .map((id) => ({
-      id,
-      name: `project_${id}`,
-      description: loremIpsum(),
-      title: `title_${id}`,
-      treesPlanted: 100,
-      hectaresRestored: 100,
-      yearSince: 2018,
-      imageUrl: 'url',
-      tags: []
-    }));
+  const data = await repository.getProjects()
   return NextResponse.json({
     projects: data
   });

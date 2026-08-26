@@ -1,10 +1,9 @@
 import {NextRequest, NextResponse} from "next/server";
 
-import _ from 'lodash';
+import repository from "@/app/api/repository";
 
 export async function GET(request: NextRequest) {
-  const data = _.range(1, 10)
-    .map(id => ({month: `month_${id}`, year: 2022, investmentsInCategories: [], investmentsInCountries: []}));
+  const data = await repository.getReports();
   return NextResponse.json({
     reports: data
   });

@@ -6,7 +6,6 @@ import {debounce} from "lodash";
 
 import SearchComponent, {SearchProps} from "./search-component";
 import {ResultQuery} from "@/app/api/interfaces";
-import {searchByQueryAsync} from "@/app/api";
 
 type IndexSearchProps = object
 
@@ -41,7 +40,12 @@ function InternalComponent({}: IndexSearchProps) {
     const fetchData = async () => {
       setProgress(true);
 
-      const data = await searchByQueryAsync(q?.toString());
+      const data: ResultsState = {
+        page: 1,
+        size: 10,
+        searches: [],
+        count: 3
+      }
 
       setResultsObject(data);
       setProgress(false);

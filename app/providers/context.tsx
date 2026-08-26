@@ -8,8 +8,8 @@ export enum Language {
 }
 
 export interface ITranslation {
-  [Language.English]: any;
-  [Language.French]: any;
+  [Language.English]: object;
+  [Language.French]: object;
 }
 
 export const LanguageContext = createContext(Language.English);

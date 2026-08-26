@@ -1,10 +1,23 @@
 import HowItWorksPage from "./how-it-works-component";
 import * as Components from "./components";
 import {withLanguageControls} from "@/app/helpers";
+import type { Meta } from "@storybook/nextjs-vite";
 
-export default function Index() {
+function Index() {
   return <div></div>;
 }
+
+const meta = {
+  title: "Ecosia/HowItWorks",
+  component: Index,
+  tags: ["autodocs"],
+  parameters: {
+    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
+    layout: "fullscreen",
+  },
+} satisfies Meta<typeof Index>;
+
+export default meta;
 
 export const BrandsComponent = withLanguageControls(Components.BrandsComponent);
 

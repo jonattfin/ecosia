@@ -1,53 +1,26 @@
-import _ from "lodash";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { withLanguageControls } from "@/app/helpers";
 import BlogComponent, { BlogProps } from "./blog-component";
+import repository from "@/app/api/repository";
 
-export default function Index() {
-  return <div></div>;
-}
+const meta = {
+  title: "Ecosia/Blog",
+  component: BlogComponent,
+  tags: ["autodocs"],
+  parameters: {
+    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
+    layout: "fullscreen",
+  },
+} satisfies Meta<typeof BlogComponent>;
+
+export default meta;
 
 const props: BlogProps = {
   id: 1,
-  projects: [],
-  reports: [],
+  projects: await repository.getProjects(),
+  reports: await repository.getReports(),
   language: "",
 };
 
 export const BlogIndex = withLanguageControls(BlogComponent, props);
-
-function getReports() {
-  const year = 2022;
-  const months = ["April", "March", "February"];
-
-  const investments = [
-    "trees",
-    "green investments",
-    "taxes and social security",
-    "spreading the word",
-    "operational costs",
-  ];
-  const countries = [
-    "brazil",
-    "kenya",
-    "tanzania",
-    "rwanda",
-    "mexico",
-    "thailand",
-  ];
-
-  return months.map((month) => {
-    return {
-      month: `${month}`,
-      year,
-      investments: investments.map((investment) => ({
-        name: investment,
-        value: _.random(100, 1000),
-      })),
-      countries: countries.map((country) => ({
-        name: country,
-        value: _.random(100, 1000),
-      })),
-    };
-  });
-}

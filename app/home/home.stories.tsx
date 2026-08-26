@@ -1,10 +1,21 @@
 import * as Components from "./components";
 import {withLanguageControls} from "@/app/helpers";
 import {ReportData} from "@/app/api/interfaces";
+import type { Meta } from "@storybook/nextjs-vite";
 
-export default function Index() {
-  return <div></div>;
-}
+const HomeComponent = () => <div>&nbsp;</div>
+
+const meta = {
+  title: "Ecosia/Home",
+  component: HomeComponent,
+  tags: ["autodocs"],
+  parameters: {
+    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
+    layout: "fullscreen",
+  },
+} satisfies Meta<typeof HomeComponent>;
+
+export default meta;
 
 export const SearchComponent = withLanguageControls(
   Components.SearchComponent,

@@ -56,7 +56,6 @@ function InternalComponent() {
   const {data: projectsData, isPending: projectsArePending, error: projectsError} = useProjects();
   const {data: reportsData, isPending: reportsArePending, error: reportsError} = useReports();
 
-
   if (projectsArePending || reportsArePending) return "Loading...";
   if (projectsError || reportsError || !projectsData || !reportsData)
     return "An error has occurred...";
